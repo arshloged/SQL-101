@@ -103,8 +103,99 @@ SELECT *
 FROM departamentos
 WHERE cod_depto = 27;
 
+/*16) Agregar un nuevo nivel académico, invente los datos. */
+
+INSERT INTO nivelesacademicos (cod_nivel_acad, nombre, descripcion)
+VALUES (9, "Astronauta", "Llegó a la luna");
+
+SELECT *
+FROM nivelesacademicos;
+
+/*17) Agregar nombre, teléfono de casa, teléfono móvil, código de nivel académico, código de
+municipio y dpi para un ciudadano. (invente los datos). */
+
+INSERT INTO ciudadanos (dpi, apellido, nombre, direccion, tel_casa, tel_movil, email, fechanac, cod_nivel_acad, cod_muni)
+VALUES ("509133470101", "Shirly", "Gonzalez Rodriguez", "1 calle 1-12 zona 1", "", "44232402", "shirlin@mail.com", "1995-10-07", "9", "99");
+
+SELECT *
+FROM ciudadanos
+WHERE dpi = 509133470101;
+
+/*18) Cambiar la dirección y el teléfono para el ciudadano con el DPI 2283761300101, los nuevos
+datos son:
+Dirección: 7ma. calle 7-77 zona 7
+Teléfono de casa: 22224444 */
+
+UPDATE ciudadanos
+SET tel_casa = "22224444",
+	direccion = "7ma. calle 7-77 zona 7"
+WHERE	dpi = 2283761300101;
+
+/*19) Modificar el correo electrónico para el ciudadano con el DPI 4455667780105 este debe ser
+zoyelnuevo@mail.com. */
+
+UPDATE ciudadanos
+SET	email = "zoyelnuevo@mail.com"
+WHERE dpi = "4455667780105";
+
+/*20) Modificar Apellido, dirección, teléfono de casa, teléfono móvil y fecha de nacimiento de algún
+ciudadano existente, invente todos los datos. */
+
+UPDATE	ciudadanos
+SET apellido = "Sian", direccion = "Rafael, zona 18", tel_movil = "85963265", fechanac ="2004-11-22"
+WHERE	dpi = 509133470101;
+
+SELECT *
+FROM ciudadanos
+WHERE dpi = 509133470101;
+
+/*21) Cambiar el nombre de la región agregada en el inciso 13, el nombre debe ser Región 13. */
+
+UPDATE	regiones
+SET nombre = "Region 1-3"
+WHERE cod_region = 222;
+
+SELECT *
+FROM regiones;
+
+/*22) Modificar los datos del nivel académico agregado en el inciso 16, el nombre debe ser Nivel 16 y
+en la descripción colocar el texto nombre modificado en la consulta 22. */
 
 
+UPDATE	nivelesacademicos
+SET nombre = "Nivel 16 de Astronauta"
+WHERE	cod_nivel_acad = 9;
 
+SELECT *
+FROM nivelesacademicos;
 
+/*23) Eliminar el nivel académico inventado. */
 
+DELETE FROM nivelesacademicos
+WHERE	cod_nivel_acad =9;
+
+/*24) 24. Eliminar todos los ciudadanos que nacieron en el municipio con el código 2217 */
+
+DELETE FROM ciudadanos
+WHERE cod_muni = 2217;
+
+/*25) Eliminar al ciudadano con DPI 2283761300101 */
+
+DELETE FROM ciudadanos
+WHERE	dpi = 2283761300101;
+
+/*26) Eliminar a todos los ciudadanos que nacieron en el municipio 101 y que tienen fecha de
+nacimiento menor a 1980. */
+
+DELETE FROM ciudadanos
+WHERE cod_muni = 101 AND fechanac <= "1980-01-01";
+
+/*27) Eliminar todos los departamentos de la región no. 7 */
+
+DELETE FROM departamentos
+WHERE cod_region = 7;
+
+/*28) Eliminar a los ciudadanos con teléfono móvil 33734648 y teléfono de casa 21243830 */
+
+DELETE FROM ciudadanos
+WHERE tel_movil= "33734648", tel_casa = "21243830";
